@@ -1,14 +1,15 @@
 # Demo project to compile Crate dependencies with Meson
 
-This project builds a Rust program that uses the
-[itoa crate](https://github.com/dtolnay/itoa). It uses Cargo but
-this script downloads and converts it on the fly to build
-and integrate with Meson instead.
+This project builds a Rust program that uses a few simple crates from
+crates.io. The crates are downloaded using the crates.io REST API, and are
+converted to build with meson instead of Cargo.
+
+Check `meson.build` to see which crates are used.
 
 To run it do the following:
 
 ```shell
-./get_cargo_deps.py itoa 0.3.4
+mkdir subprojects # This is where the crates end up
 meson build
 ninja -C build
 build/prog
